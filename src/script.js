@@ -33,6 +33,24 @@ controls.enableZoom = false;
 
 //---------------------------------------------------------
 
+// Adding Responsiveness
+
+window.addEventListener('resize', () => {
+    // Update sizes
+    sizes.width = window.innerWidth
+    sizes.height = window.innerHeight
+
+    // Update camera
+    camera.aspect = sizes.width / sizes.height
+    camera.updateProjectionMatrix()
+
+    // Update renderer
+    renderer.setSize(sizes.width, sizes.height)
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+})
+
+//---------------------------------------------------------
+
 // Objects
 
 const geometry = new THREE.TorusKnotGeometry( 10, 3, 100,16 );
